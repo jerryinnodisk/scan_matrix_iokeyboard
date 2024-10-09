@@ -18,7 +18,9 @@ obj-$(CONFIG_IOKEYPAD)			+= iokeypad.o
 CONFIG_IOKEYPAD=y
 ```
 
-## 5.Compile linux-imx 
+## 5.Set up device tree (view details in iokeypad(matrix_gpio_keypad).txt)
+
+## 6.Compile linux-imx 
 ```
 $ bitbake linux-imx -c compile -f kernel_configme
 $ bitbake linux-imx 

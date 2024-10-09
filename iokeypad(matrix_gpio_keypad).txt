@@ -1,0 +1,42 @@
+* GPIO driven iokeypad (matrix keypad) device tree bindings
+
+
+Required Properties:
+- compatible:		Should be "iokeypad"
+- iokeypad_in-gpios:		List of gpios used as input lines. The gpio specifier
+			for this property depends on the gpio controller to
+			which these row lines are connected.
+- iokeypad_out-gpios:		List of gpios used as output lines. The gpio specifier
+			for this property depends on the gpio controller to
+			which these column lines are connected.
+- iokeypad,keymap:		The definition can be found at
+			bindings/input/matrix-keymap.txt
+
+Example:
+	iokeypad {
+		compatible = "iokeypad";
+		iokeypad_in-gpios = <&gpio4 24 0
+		   				   &gpio4 25 0
+						   &gpio4 23 0
+						   &gpio4 30 0>;
+		iokeypad_out-gpios = <&gpio3 21 GPIO_ACTIVE_HIGH
+							&gpio3 22 GPIO_ACTIVE_HIGH
+							&gpio3 23 GPIO_ACTIVE_HIGH
+							&gpio3 24 GPIO_ACTIVE_HIGH>;
+		iokeypad,keymap = <0x00000008  /*0x0=KEY_7*/
+						0x00000009	/*0x1=KEY_8*/
+						0x0000000a	/*0x2=KEY_9*/
+						0x0000000c	/*0x3=KEY_MINUS*/
+						0x00000005	/*1x0=KEY_4*/
+						0x00000006	/*1x1=KEY_5*/
+						0x00000007	/*1x2=KEY_6*/
+						0x0000004e	/*1x3=KEY_KPPLUS*/
+						0x00000002  /*2x0=KEY_1*/
+						0x00000003	/*2x1=KEY_2*/
+						0x00000004	/*2x2=KEY_3*/
+						0x00000037	/*2x3=KEY_KPASTERISK(*)*/
+						0x0000000b  /*3x0=KEY_0*/
+						0x00000034  /*3x1=KEY_DOT*/
+						0x0000001c  /*3x2=KEY_ENTER*/
+						0x00000035>;  /*3x3=KEY_SLASH*/
+	};
